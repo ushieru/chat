@@ -1,6 +1,7 @@
 library messages_screen;
 
 import 'package:chat/app/widgets/chat_row.dart';
+import 'package:chat/context/socketio_wraper/socket_io_wrapper.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -21,33 +22,33 @@ class MessagesScreen extends GetResponsiveView<MessagesScreenController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Messages',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Messages',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: controller.getOnlineUsers,
+                    icon: Icon(Icons.update),
+                  ),
+                ],
               ),
               SizedBox(height: 15),
               Expanded(
-                child: ListView(
-                  children: [
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                    ChatRow(),
-                  ],
+                child: Obx(
+                  () => ListView(
+                    children: List.generate(
+                      controller.userOnline.length,
+                      (index) => ChatRow(
+                        userName: controller.userOnline[index],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
