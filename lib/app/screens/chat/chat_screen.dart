@@ -2,7 +2,8 @@ library chat_screen;
 
 import 'package:chat/app/widgets/in_chat_header.dart';
 import 'package:chat/app/widgets/message.dart';
-import 'package:chat/context/message/domain/message.dart' as Domain;
+import 'package:chat/context/messages/message.dart' as Domain;
+import 'package:chat/context/socketio_wraper/socket_io_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,7 @@ class ChatScreen extends GetResponsiveView<ChatScreenController> {
       body: SafeArea(
         child: Column(
           children: [
-            InChatHeader(),
+            Obx(() => InChatHeader(name: controller.userNameTarget.value)),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(15),
