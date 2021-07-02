@@ -37,7 +37,7 @@ class ChatRow extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae posuere justo, vel maximus ex. Donec vestibulum dapibus ex id rutrum. Donec sodales feugiat velit in faucibus. Maecenas accumsan dui nulla, congue pretium odio feugiat vitae. Praesent sed rhoncus nisl.',
+                    '',
                     style: TextStyle(
                       fontSize: 11,
                       color: Colors.grey,
@@ -51,12 +51,11 @@ class ChatRow extends StatelessWidget {
             SizedBox(width: 15),
             Align(
               alignment: Alignment.topRight,
-              child: Text(
-                '23m',
-                style: TextStyle(
+              child: ClipOval(
+                child: Container(
+                  height: 10,
+                  width: 10,
                   color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
                 ),
               ),
             ),
