@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatRow extends StatelessWidget {
+  final String userName;
+
+  const ChatRow({Key? key, required this.userName}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(ChatScreen.routeName),
+      onTap: () => Get.toNamed(ChatScreen.routeName, arguments: userName),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         width: double.maxFinite,
@@ -27,7 +31,7 @@ class ChatRow extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Random Name',
+                    userName,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
