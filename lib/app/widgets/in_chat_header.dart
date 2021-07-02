@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class InChatHeader extends StatelessWidget {
+  final String name;
+
+  const InChatHeader({Key? key, required this.name}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +31,7 @@ class InChatHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Random Name',
+                name,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 5),
